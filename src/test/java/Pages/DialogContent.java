@@ -1,63 +1,45 @@
 package Pages;
 // POM  :  Page
+
 import Utilities.GWD;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class DialogContent {
+public class DialogContent extends Parent {
     // kullanıcı ile dialogla veri alan bölümler
 
     public DialogContent() {
-        PageFactory.initElements(GWD.getDriver(), this);
+        PageFactory.initElements(GWD.getDriver(),this);
     }
 
     @FindBy(css = "input[formcontrolname='username']")
     public WebElement username;
 
-    @FindBy(css = "input[formcontrolname='password']")
+    @FindBy(css="input[formcontrolname='password']")
     public WebElement password;
 
-    @FindBy(css = "button[aria-label='LOGIN']")
+    @FindBy(css="button[aria-label='LOGIN']")
     public WebElement loginButton;
 
-    public void findAndClick(WebElement element){
+    @FindBy(css="span[class='mat-tooltip-trigger logo-text']")
+    public WebElement txtTechnoStudy;
 
-        //tıklatılabilir olana kadar bekle
-        // scroll olana kdadr bekle
-        // elemente click
+    @FindBy(xpath="//ms-add-button[contains(@tooltip,'ADD')]//button")
+    public WebElement addButton;
 
-        WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+    @FindBy(xpath="//ms-text-field[@formcontrolname='name']/input")
+    public WebElement nameInput;
 
-        JavascriptExecutor js=(JavascriptExecutor) GWD.getDriver();
-        js.executeScript("arguments[0].scrollIntoView();",element);
-        element.click();
+    @FindBy(xpath="//ms-text-field[@formcontrolname='code']/input")
+    public WebElement codeInput;
 
-
-
-    }
-    public void findAndSend(WebElement element,String text){
-
-        // gözükene kadar bekle
-        // scroll olana kdadr bekle
-        // içini temizle
-        // text i gönder
-
-        WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-
-        JavascriptExecutor js=(JavascriptExecutor) GWD.getDriver();
-        js.executeScript("arguments[0].scrollIntoView();",element);
-        element.clear();
-        element.sendKeys(text);
+    @FindBy(xpath="//ms-save-button/button")
+    public WebElement saveButton;
 
 
 
-    }
+
+
+
 }
