@@ -17,7 +17,7 @@ public class _04_CizitenShipSteps {
         ln.clickFunction(ln.parameters);
         ln.clickFunction(ln.citizenShip);
     }
-    @When("User a CitizenShip name as {string} short name as {string}")
+    @When("User a CitizenShip name as {} short name as {}")
     public void userACitizenShipNameAsShortNameAs(String name, String shortName) {
         dc.clickFunction(dc.addButton);
         dc.sendKeysFunction(dc.nameInput, name);
@@ -33,4 +33,8 @@ public class _04_CizitenShipSteps {
     }
 
 
+    @When("User delete the{string}")
+    public void userDeleteThe(String searcText) {
+        dc.deleteItem(searcText);
+    }
 }
