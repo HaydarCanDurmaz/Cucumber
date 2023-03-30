@@ -20,7 +20,7 @@ Feature: Exam functionality
       | addButton |
 
     And User sending the keys in Dialog Content
-      | nameInput | ismExam1 |
+      | nameInput | ismExam781 |
 
     And Click on the element in Dialog
       | academicPeriod  |
@@ -39,6 +39,6 @@ Feature: Exam functionality
       | entranceExamsTwo |
 
     And User delete item from Dialog Content
-      | ismExam1 |
+      | ismExam781 |
 
     Then Success message should be displayed

@@ -12,85 +12,113 @@ public class DialogContent extends Parent {
     // kullanıcı ile dialogla veri alan bölümler
 
     public DialogContent() {
-        PageFactory.initElements(GWD.getDriver(), this);
+        PageFactory.initElements(GWD.getDriver(),this);
     }
 
     @FindBy(css = "input[formcontrolname='username']")
     public WebElement username;
 
-    @FindBy(css = "input[formcontrolname='password']")
+    @FindBy(css="input[formcontrolname='password']")
     public WebElement password;
 
-    @FindBy(css = "button[aria-label='LOGIN']")
+    @FindBy(css="button[aria-label='LOGIN']")
     public WebElement loginButton;
 
-    @FindBy(css = "span[class='mat-tooltip-trigger logo-text']")
+    @FindBy(css="span[class='mat-tooltip-trigger logo-text']")
     public WebElement txtTechnoStudy;
 
-    @FindBy(xpath = "//ms-add-button[contains(@tooltip,'ADD')]//button")
+    @FindBy(xpath="//ms-add-button[contains(@tooltip,'ADD')]//button")
     public WebElement addButton;
 
-    @FindBy(xpath = "//ms-text-field[@formcontrolname='name']/input")
+    @FindBy(xpath="//ms-text-field[@formcontrolname='name']/input")
     public WebElement nameInput;
 
-    @FindBy(xpath = "//ms-text-field[@formcontrolname='code']/input")
+    @FindBy(xpath="//ms-text-field[@formcontrolname='code']/input")
     public WebElement codeInput;
 
-    @FindBy(xpath = "//ms-save-button/button")
+    @FindBy(xpath="//ms-save-button/button")
     public WebElement saveButton;
 
-    @FindBy(xpath = "//div[contains(text(),'successfully')]")
+    @FindBy(xpath="//div[contains(text(),'successfully')]")
     public WebElement successMessage;
 
-    @FindBy(xpath = "//ms-text-field[@formcontrolname='shortName']/input")
+    @FindBy(xpath="//ms-text-field[@formcontrolname='shortName']/input")
     public WebElement shortName;
 
-    @FindBy(xpath = "//div[contains(text(),'already exists')]")
+    @FindBy(xpath="//div[contains(text(),'already exists')]")
     public WebElement alreadyExist;
 
-    @FindBy(xpath = "//mat-form-field//input[@data-placeholder='Name']")
+    @FindBy(xpath="//mat-form-field//input[@data-placeholder='Name']")
     public WebElement searchInput;
 
-    @FindBy(xpath = "//ms-search-button//button")
-    public WebElement searcButton;
+    @FindBy(xpath="//ms-search-button//button")
+    public WebElement searchButton;
 
-    @FindBy(xpath = "(//ms-delete-button//button)[1]")
+    @FindBy(xpath="(//ms-delete-button//button)[1]")
     public WebElement deleteImageBtn;
 
-    @FindBy(xpath = "//button[@type='submit']")
+    @FindBy(xpath="//button[@type='submit']")
     public WebElement deleteDialogBtn;
-    public WebElement getWebElement(String strButton) {
-        switch (strButton) {
 
-            case "addButton": return addButton;
-            case "saveButton": return saveButton;
-            case "nameInput": return nameInput;
-            case "codeInput": return codeInput;
+    @FindBy(xpath="//ms-text-field[@formcontrolname='budgetAccountIntegrationCode']//input")
+    private WebElement integrationCode;
+
+    @FindBy(xpath="//ms-integer-field[@formcontrolname='priority']/input")
+    private WebElement priorityCode;
+
+    @FindBy(xpath="//mat-slide-toggle[@formcontrolname='active']")
+    private WebElement toggleBar;
 
 
+    @FindBy(xpath="//mat-select//span[text()='Academic Period']")
+    private WebElement academicPeriod;
 
+    @FindBy(xpath="(//mat-option/span)[1]")
+    private WebElement academicPeriod1;
+
+    @FindBy(xpath="(//span[text()='Grade Level'])[1]")
+    private WebElement gradeLevel;
+
+    @FindBy(xpath="(//mat-option//span)[2]")
+    private WebElement gradeLevel2;
+
+
+    public WebElement getWebElement(String strButton){
+
+        switch (strButton)
+        {
+            case "addButton" : return addButton;
+            case "saveButton" : return saveButton;
+            case "nameInput" : return nameInput;
+            case "codeInput" : return codeInput;
+            case "integrationCode" : return integrationCode;
+            case "priorityCode" : return priorityCode;
+            case "toggleBar" : return toggleBar;
+            case "academicPeriod" : return academicPeriod;
+            case "academicPeriod1" : return academicPeriod1;
+            case "gradeLevel" : return gradeLevel;
+            case "gradeLevel2" : return gradeLevel2;
         }
+
         return null;
     }
 
 
-    public void deleteItem(String searcText) {
-        sendKeysFunction(searchInput, searcText);
-        clickFunction(searcButton);  //fuse-progress-bar/*   gözüküyor
+
+
+    public void deleteItem(String searchText){
+        sendKeysFunction(searchInput,searchText);
+        clickFunction(searchButton);   //fuse-progress-bar/*   gözüküyor
         //beklet
         //1. StaleElemetn hatası verdi : erken buldum tez kaybettim
         //wait.until(ExpectedConditions.elementToBeClickable(searchButton));
 
         //fuse-progress-bar/*    bu 0 olana kadar beklet
-        wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//fuse-progress-bar/*"), 0));
+        wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//fuse-progress-bar/*") , 0));
 
         clickFunction(deleteImageBtn);
         clickFunction(deleteDialogBtn);
-
-
     }
-
-
-
 }
+
 
