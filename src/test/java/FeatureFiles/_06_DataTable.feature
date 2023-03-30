@@ -7,23 +7,27 @@ Feature: DataTable Functionality
 
   Scenario: Create Country
     And Click on the element in LeftNav
-      | setup         |
-      | parameters    |
-      | countries     |
-      | citizenShip   |
-      | nationalities |
+      | setup      |
+      | parameters |
+      | countries  |
 
     And Click on the element in Dialog
       | addButton |
 
-    And User Sending the keys in Dialog
-      | nameInput |  | Kyf34f12   |
-      | codeInput |  | 34563434ty |
+    And User sending the keys in Dialog Content
+      | nameInput | ismetU1lk1 |
+      | codeInput | i3434      |
 
     And Click on the element in Dialog
       | saveButton |
 
     Then Success message should be displayed
+
+    And User delete item from Dialog Content
+      | ismetU1lk1 |
+
+    Then Success message should be displayed
+
 
   Scenario: Create Nationality
 
@@ -36,12 +40,53 @@ Feature: DataTable Functionality
       | addButton |
 
     And User sending the keys in Dialog Content
-      | nameInput | isme1tU12223lk1 |
+      | nameInput | ismyy1tU123lk1 |
 
     And Click on the element in Dialog
       | saveButton |
 
     Then Success message should be displayed
+
+    And User delete item from Dialog Content
+      | ismyy1tU123lk1 |
+
+    Then Success message should be displayed
+
+
+  Scenario: Fee Functionality
+    And Click on the element in LeftNav
+      | setup      |
+      | parameters |
+      | fees       |
+
+    And Click on the element in Dialog
+      | addButton |
+
+    And User sending the keys in Dialog Content
+      | nameInput       | ipme1tFe44 |
+      | codeInput       | h0934      |
+      | integrationCode | 15454      |
+      | priorityCode    | 15665      |
+
+    And Click on the element in Dialog
+      | toggleBar  |
+      | saveButton |
+
+    Then Success message should be displayed
+
+    And User delete item from Dialog Content
+      | ipme1tFe44 |
+
+    Then Success message should be displayed
+
+
+
+
+
+
+
+
+
 
 
 
