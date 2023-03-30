@@ -7,6 +7,41 @@ Feature: DataTable Functionality
 
   Scenario: Create Country
     And Click on the element in LeftNav
-      | setup      |
-      | parameters |
-      | citizenShip  |
+      | setup         |
+      | parameters    |
+      | countries     |
+      | citizenShip   |
+      | nationalities |
+
+    And Click on the element in Dialog
+      | addButton |
+
+    And User Sending the keys in Dialog
+      | nameInput |  | Kyf34f12   |
+      | codeInput |  | 34563434ty |
+
+    And Click on the element in Dialog
+      | saveButton |
+
+    Then Success message should be displayed
+
+  Scenario: Create Nationality
+
+    And Click on the element in LeftNav
+      | setup         |
+      | parameters    |
+      | nationalities |
+
+    And Click on the element in Dialog
+      | addButton |
+
+    And User sending the keys in Dialog Content
+      | nameInput | isme1tU12223lk1 |
+
+    And Click on the element in Dialog
+      | saveButton |
+
+    Then Success message should be displayed
+
+
+
