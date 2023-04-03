@@ -76,9 +76,9 @@ Feature: DataTable Functionality
     Then Success message should be displayed
 
     And User delete item from Dialog Content
-      | ip1w1q44 |
+      | ip1w1q4 |
 
-    Then Success message should be displayed
+  Then Success message should be displayed
 
 
 

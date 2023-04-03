@@ -13,8 +13,8 @@ public class Hooks {
 
         if (senaryo.isFailed()){
            TakesScreenshot ts= (TakesScreenshot)GWD.getDriver();
-           byte[] hafizadakihali=ts.getScreenshotAs(OutputType.BYTES);
-           senaryo.attach(hafizadakihali,"imh/png","screen shot");
+          final byte[] hafizadakihali=ts.getScreenshotAs(OutputType.BYTES);
+           senaryo.attach(hafizadakihali,"image/png","screenshot name");
         }
 
         GWD.quitDriver();
