@@ -28,8 +28,8 @@ public class _02_CountrySteps {
             String ulkeKodu =RandomStringUtils.randomNumeric(4);// 4 rakam
 
             dc.clickFunction(dc.addButton);
-            dc.sendKeysFunction(dc.nameInput,"TÜRKİYeeeEee");
-            dc.sendKeysFunction(dc.codeInput,"3095");
+            dc.sendKeysFunction(dc.nameInput,ulkeAdi);
+            dc.sendKeysFunction(dc.codeInput,ulkeKodu);
             dc.clickFunction(dc.saveButton);
 
         }
