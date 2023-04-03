@@ -31,8 +31,13 @@ public class GWD {
         logger.setLevel(Level.SEVERE);
         System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
 
+        // Diger senaryolar için default chrome
+        if (threadBrowsername.get()==null)
+            threadBrowsername.set("chrome");
+
+
         if (threadDriver.get() == null) { // bu thread de get driver varmı
-            switch (browserTipi) {
+            switch (threadBrowsername.get()) {
                 case "firefox":
                     threadDriver.set(new FirefoxDriver());
                     break;
@@ -70,7 +75,7 @@ public class GWD {
     }
 
     public static void threadBrowserSet(String browser){
-        threadBrowserName.set(browser);
+        threadBrowsername.set(browser);
     }
 
 }
