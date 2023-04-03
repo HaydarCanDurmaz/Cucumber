@@ -36,12 +36,12 @@ Feature: Fees multiple values functionality
     Then Success message should be displayed
 
     Examples:
-      | name      | code   | intCode  | priority |
-      | ismFeee1  | 2tr3   | payPal   | 12234    |
-      | ismFree2  | 24221  | cash     | 12235    |
-      | ismrFee3  | 223423 | cheque   | 12236    |
-      | ismFttee4 | 222454 | applePay | 12237    |
-      | ismFrtee5 | 222456 | crypto   | 12238    |
+      | name    | code    | intCode  | priority |
+      | ismpee  | r3p3    | payPal   | 13111    |
+      | ismFe2  | 5522r1  | cash     | 13115    |
+      | isqee3  | 444343  | cheque   | 33336    |
+      | mFrtee4 | 25554t  | applePay | 13324    |
+      | isptee5 | 211256y | crypto   | 11233     |
 
 
 
