@@ -4,15 +4,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GWD {
-    private static WebDriver driver;
+    // her 1 özel lokal static driver oluşturdum
+    private static ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();//
+    private static ThreadLocal<String> threadBrowsername = new ThreadLocal<>();
 
-    public static WebDriver getDriver()
+
+    // threadDriver.get()  --> bulunduğum thread deki driverı ver
+    // threadDriver.set(driver) --> bulunduğum thread e driver set ediliyor
+    public static  WebDriver getDriver()
     {
         // extend report türkçe bilg çalışmaması sebebiyle kondu
         Locale.setDefault(new Locale("EN"));
@@ -23,14 +31,28 @@ public class GWD {
         logger.setLevel(Level.SEVERE);
         System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
 
-        if (driver == null) { // 1 kere çalışssın
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--remote-allow-origins=*");
-            driver = new ChromeDriver(options);
-            driver.manage().window().maximize();
-        }
+        if (threadDriver.get() == null) { // bu thread de get driver varmı
+            switch (browserTipi) {
+                case "firefox":
+                    threadDriver.set(new FirefoxDriver());
+                    break;
+                case "safari":
+                    threadDriver.set(new SafariDriver());
+                    break;
+                case "edge":
+                    threadDriver.set(new EdgeDriver());
+                    break;
 
-        return driver;
+                default:
+                    //chrome
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--remote-allow-origins=*");
+                    threadDriver.set(new ChromeDriver(options));// yoksa bi tane set ver
+                    break;
+            }
+        }
+        threadDriver.get().manage().window().maximize();
+        return threadDriver.get();
     }
 
     public static void quitDriver(){
@@ -40,11 +62,15 @@ public class GWD {
             throw new RuntimeException(e);
         }
 
-        if (driver != null) { // dolu ise, boş değilse
-            driver.quit();
-            driver=null;
+        if (threadDriver.get() != null) { // dolu ise, boş değilse
+            threadDriver.get().quit();
+            WebDriver driver = threadDriver.get(); driver=null;
+            threadDriver.set(driver);
         }
     }
 
+    public static void threadBrowserSet(String browser){
+        threadBrowserName.set(browser);
+    }
 
 }
