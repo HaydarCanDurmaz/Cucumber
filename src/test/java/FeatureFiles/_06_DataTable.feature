@@ -16,7 +16,7 @@ Feature: DataTable Functionality
       | addButton |
 
     And User sending the keys in Dialog Content
-      | nameInput | iterU1lk1 |
+      | nameInput | irerU1lk1 |
       | codeInput | i30914    |
 
     And Click on the element in Dialog
@@ -25,7 +25,7 @@ Feature: DataTable Functionality
     Then Success message should be displayed
 
     And User delete item from Dialog Content
-      | ismetU1lk1 |
+      | irerU1lk1 |
 
     Then Success message should be displayed
 
@@ -64,10 +64,10 @@ Feature: DataTable Functionality
       | addButton |
 
     And User sending the keys in Dialog Content
-      | nameInput       | ip1tFe44 |
+      | nameInput       | ip1w1q44 |
       | codeInput       | 9934     |
-      | integrationCode | 15pp4    |
-      | priorityCode    | 15uu5     |
+      | integrationCode | 152pp4   |
+      | priorityCode    | 1122     |
 
   And Click on the element in Dialog
       | toggleBar  |
@@ -76,7 +76,7 @@ Feature: DataTable Functionality
     Then Success message should be displayed
 
     And User delete item from Dialog Content
-      | ipme1tFe44 |
+      | ip1w1q44 |
 
     Then Success message should be displayed
 
