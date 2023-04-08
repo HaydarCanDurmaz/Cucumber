@@ -1,5 +1,6 @@
 package Utilities;
 
+import io.cucumber.java.Scenario;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -31,6 +32,11 @@ public class ExcelUtility {
 
         return tablo;
     }
+    public static void writeExcel(String path, Scenario senaryo, String browserName){
+        // burada her bir senaryonun sonucunda excel yazılacak
+
+    }
+
 
 
 }
