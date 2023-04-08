@@ -12,7 +12,7 @@ import java.util.Scanner;
  * Kullanıcıdan istediği kolon sayısını aldıktan sonra
  * aşağıdaki excelin 2.Sheet inden istediği kadar kolon miktarını alarak
  * bir fonksyonda ArrayListe çevirerek mainden yazdırınız.
- * src/test/java/ApachePOI/resources/ApacheExcel2.xlsx
+ * src/test/java/ApachePOI/resource/ApacheExcel2.xlsx
  */
 public class _09_Task {
     public static void main(String[] args) {
