@@ -13,49 +13,53 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GWD {
-    // her 1 özel lokal static driver oluşturdum
-    private static ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();//
-    private static ThreadLocal<String> threadBrowsername = new ThreadLocal<>();
-
+    //her 1 threde özel lokal static driver oluşturdum
+    private static ThreadLocal<WebDriver> threadDriver=new ThreadLocal<>(); //webDriver 1 , webDriver 2..
+    private static ThreadLocal<String> threadBrowserName=new ThreadLocal<>(); // chrome, firefox
 
     // threadDriver.get()  --> bulunduğum thread deki driverı ver
     // threadDriver.set(driver) --> bulunduğum thread e driver set ediliyor
-    public static  WebDriver getDriver()
+    public static WebDriver getDriver()
     {
         // extend report türkçe bilg çalışmaması sebebiyle kondu
         Locale.setDefault(new Locale("EN"));
         System.setProperty("user.language", "EN");
 
-
         Logger logger= Logger.getLogger("");
         logger.setLevel(Level.SEVERE);
         System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
 
-        // Diger senaryolar için default chrome
-        if (threadBrowsername.get()==null)
-            threadBrowsername.set("chrome");
+        //diğer senaryolar için default chrome
+        if (threadBrowserName.get() == null)
+            threadBrowserName.set("chrome");
 
+        if (threadDriver.get() == null) { // bu thread de driver var mı
 
-        if (threadDriver.get() == null) { // bu thread de get driver varmı
-            switch (threadBrowsername.get()) {
+            switch (threadBrowserName.get())
+            {
                 case "firefox":
                     threadDriver.set(new FirefoxDriver());
                     break;
+
                 case "safari":
                     threadDriver.set(new SafariDriver());
                     break;
+
                 case "edge":
                     threadDriver.set(new EdgeDriver());
                     break;
 
                 default:
                     //chrome
+
+                    //Jenkins için Chrome memory maximize
                     ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--remote-allow-origins=*");
-                    threadDriver.set(new ChromeDriver(options));// yoksa bi tane set ver
+                    options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu", "--window-size=1400,2400");
+                    threadDriver.set(new ChromeDriver(options));   // yoksa buraya bir tane set et
                     break;
             }
         }
+
         threadDriver.get().manage().window().maximize();
         return threadDriver.get();
     }
@@ -75,10 +79,11 @@ public class GWD {
     }
 
     public static void threadBrowserSet(String browser){
-        threadBrowsername.set(browser);
+        threadBrowserName.set(browser);
     }
-    public static String threadBrowserGet( ) {
-      return   threadBrowsername.get();
+
+    public static String threadBrowserGet(){
+        return threadBrowserName.get();
     }
 
 }
