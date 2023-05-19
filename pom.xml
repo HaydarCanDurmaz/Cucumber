@@ -21,7 +21,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.8.1</version>
+            <version>4.8.3</version>
         </dependency>
 
         <dependency>
@@ -70,6 +70,7 @@
             <version>1.9.2</version>
         </dependency>
 
+
         <!-- Excel işlemleri için aşağıdaki 2 depency ye kullanılıyor, -->
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <dependency>
@@ -92,14 +93,10 @@
             <version>8.0.18</version>
         </dependency>
 
+
     </dependencies>
 
 
-
-    <!--    Maven test çalıştırınca çalıştırılacak bölümün setlenmesi kısmı-->
-
-    <!--  Jenkins in Çalıştırma komutunun , nereyi açlıştıracağını belirlediğimiz plugin -->
-    <!--    https://maven.apache.org/surefire/maven-surefire-plugin/examples/testng.html-->
     <!--  Jenkins in Çalıştırma komutunun , nereyi açlıştıracağını belirlediğimiz plugin -->
     <build>
         <plugins>
